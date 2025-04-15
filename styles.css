@@ -1,0 +1,377 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
+.calculator-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: auto;
+}
+
+/* Calculator Layout */
+.calculator {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.calculator.scientific-mode {
+  width: 600px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.header .mode-toggle,
+.header .history-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.header .mode-toggle:hover,
+.header .history-icon:hover {
+  color: orange;
+}
+
+/* History Section */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.history-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  flex-grow: 1;
+}
+
+.clear-history-btn,
+.close-btn {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.clear-history-btn {
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  margin-right: 15px;
+}
+
+.clear-history-btn:hover {
+  background-color: orange;
+}
+
+.history-container {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  width: 350px;
+  max-height: 60%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-entry {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.history-entry p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Display Section */
+.display {
+  width: 100%;
+  height: 60px;
+  text-align: right;
+  font-size: 1.5rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+/* Button Layout */
+.buttons {
+  display: grid;
+  gap: 10px;
+}
+
+.standard {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 5px;
+}
+
+.scientific {
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.memory-operations {
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 5px;
+}
+
+/* Button Styles */
+button {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #e0e0e0;  /* Default hover background color */
+  transform: scale(1);  /* Slight scaling effect to highlight the button */
+}
+
+button.erase {
+  background-color: #f5f5f5;
+}
+
+button.erase:hover {
+  background-color: #ff9f00;
+}
+
+/* Standard Button Styles */
+.standard button {
+  background-color: #f5f5f5;
+  font-size: 1.2rem;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+.standard button.operator {
+  background-color: orange !important;
+  color: white !important;
+}
+
+.standard button:nth-child(4n) {
+  background-color: orange !important;
+  color: white !important;
+}
+
+.standard button:nth-child(-n+4) {
+  background-color: #d9d9d9;
+}
+
+/* Scientific Button Styles */
+.scientific button {
+  background-color: #d9d9d9;
+  font-size: 1rem;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.scientific button.function {
+  font-style: italic;
+  color: #333;
+}
+
+.scientific button.pi,
+.scientific button.e {
+  font-weight: bold;
+}
+
+.scientific button.memory {
+  background-color: #f5f5f5;
+}
+
+.scientific button.memory:hover {
+  background-color: #e0e0e0;
+}
+
+.scientific button#parentheses-btn {
+  width: 100%;
+  font-size: 1rem;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Memory Operations Button Styles */
+.memory-operations button {
+  background-color: #d9d9d9;
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+/* Mode-Specific Styles */
+.calculator.scientific-mode .buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.calculator.scientific-mode .header .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.calculator.scientific-mode .conversions-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calculator.scientific-mode .display {
+  height: 70px;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.calculator.scientific-mode .standard button {
+  font-size: 1rem; 
+  padding: 10px; 
+  margin-top: 10px;
+}
+
+.calculator.scientific-mode #standard-buttons button {
+  font-size: 1rem; 
+  padding: 10px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.calculator.scientific-mode .scientific-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  max-height: 100%;
+  border-right: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.scientific-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.scientific-buttons button {
+  background-color: #d9d9d9;
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* Conversion Row */
+.conversions-row {
+  display: block; /* Ensure that each conversion takes its own line */
+  margin-top: 2px;
+  padding-left: 10px;
+}
+
+.conversion {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  padding-top: 5px;
+  margin-top: 5px;
+  margin-left: -10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 8px;
+}
+
+.conversion-label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #666;
+  text-align: left;
+  font-weight: bold;
+  flex: 1;
+}
+
+.conversion-value {
+  font-size: 1rem;
+  color: #333;
+  text-align: right;
+  flex: 2;
+}
+
+/* Hide the conversions row initially */
+.conversions-row.hidden {
+  display: none;
+}
+
+
+/* Hidden Elements */
+.hidden {
+  display: none;
+}
+
+/* Transitions */
+.calculator-container {
+  transition: height 0.3s ease-in-out;
+}
+
+.standard button:hover, .scientific button:hover, .memory-operations button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1); /* Smooth hover effect for all buttons */
+}

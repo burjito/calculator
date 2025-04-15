@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="calculator-container">
+    <div id="calculator" class="calculator">
+      <!-- Header -->
+      <div class="header">
+        <div class="history-icon" onclick="showHistory()">☰</div>
+        <div class="title">Standard</div>
+        <button class="mode-toggle" onclick="toggleScientificMode()">⇄</button>
+      </div>
+
+      <!-- Display -->
+      <input id="display" type="text" class="display" oninput="updateConversions()" disabled />
+
+      <!-- History Container -->
+      <div class="history-container hidden">
+        <div class="history-header">
+          <div class="history-title">History</div>
+          <button class="clear-history-btn" onclick="clearHistory()">Clear</button>
+          <span class="close-btn" onclick="closeHistory()">×</span>
+        </div>
+        <div class="history-content"></div>
+      </div>
+
+      <!-- Conversions Row -->
+      <div class="conversions-row hidden">
+        <div class="conversion">
+          <div class="conversion-label">HEX</div>
+          <div id="hex-value" class="conversion-value">0</div>
+        </div>
+        <div class="conversion">
+          <div class="conversion-label">OCT</div>
+          <div id="oct-value" class="conversion-value">0</div>
+        </div>
+        <div class="conversion">
+          <div class="conversion-label">DEC</div>
+          <div id="dec-value" class="conversion-value">0</div>
+        </div>
+        <div class="conversion">
+          <div class="conversion-label">BIN</div>
+          <div id="bin-value" class="conversion-value">0</div>
+        </div>
+      </div>
+
+      <!-- Memory Operations -->
+      <div id="memory-operations" class="buttons memory-operations">
+        <button onclick="memoryClear()">MC</button>
+        <button onclick="memoryStore()">MS</button>
+        <button onclick="memoryRecall()">MR</button>
+        <button onclick="memoryAdd()">M+</button>
+        <button onclick="memorySubtract()">M-</button>
+      </div>
+
+      <!-- Scientific Buttons -->
+      <div id="scientific-buttons" class="buttons scientific hidden">
+        <button id="parentheses-btn" onclick="toggleParentheses()">( )</button>
+        <button onclick="appendFunction('factorial')">x!</button>
+        <button onclick="appendFunction('sin')">sin</button>
+        <button onclick="appendFunction('cos')">cos</button>
+        <button onclick="appendFunction('tan')">tan</button>
+        <button onclick="appendConstant('pi')">π</button>
+        <button onclick="appendConstant('e')">e</button>
+        <button onclick="appendFunction('log')">log</button>
+        <button onclick="appendFunction('ln')">ln</button>
+        <button onclick="appendOperator('^2')">x²</button>
+        <button onclick="appendOperator('^3')">x³</button>
+        <button onclick="appendOperator('^')">xʸ</button>
+        <button onclick="appendFunction('sqrt')">√</button>
+        <button onclick="appendFunction('cbrt')">³√</button>
+        <button onclick="appendFunction('reciprocal')">1/x</button>
+      </div>
+
+      <!-- Standard Buttons -->
+      <div id="standard-buttons" class="buttons standard">
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="toggleSign()">±</button>
+        <button onclick="handlePercent()">%</button>
+        <button class="operator" onclick="appendOperator('/')">/</button>
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button class="operator" onclick="appendOperator('*')">x</button>
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button class="operator" onclick="appendOperator('-')">-</button>
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button class="operator" onclick="appendOperator('+')">+</button>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="appendDecimal()">.</button>
+        <button onclick="eraseLastCharacter()">⌫</button>
+        <button onclick="calculateResult()">=</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
